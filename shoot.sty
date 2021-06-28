@@ -1,0 +1,90 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{hyperref}
+\usepackage{comment}
+\usepackage{graphics} % Careful, first {graphics}
+\usepackage{graphicx} % Then {graphicx}, pretty weird issues
+\graphicspath{/images/}
+\usepackage[T1]{fontenc}
+\usepackage[default,scaled,defaultsans]{opensans}
+\usepackage{textpos}
+\usepackage{svg}
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{geometry}
+  \geometry{
+    showframe, % ONLY FOR DEVELOPMENT PURPOSES (Also see colorlet frame below)
+    legalpaper,
+    landscape,
+    headheight=44.16pt,
+    margin=0.5in,
+    hoffset=-0.25in,
+    voffset=0.125in,
+    headsep=0.1pt,
+    footskip=18.11pt,
+    headsep=0pt,
+    marginparwidth=-20pt,
+    marginparsep=0in,
+    outer=0in
+  }
+\renewcommand\familydefault{\sfdefault}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+  \fancyhead[L]{
+    \begin{tabular}{l}
+    SCHEDULE \\
+    \hline Sunday, March 01, 2017 - Saturday, April 1, 2017
+    \end{tabular}  
+  }
+  \fancyhead[R]{
+  \includegraphics[width=6cm,height=1cm]{pixel.png}
+  }
+  \fancyfoot[L]{
+    \begin{tabular}{c|l}
+    \multirow{2}{*}{\includegraphics[width=1.4cm,height=0.4cm]{pixel.png}} & This document contains proprietary and confidential property of Mello Yello
+    \end{tabular}
+  }
+  \fancyfoot[R]{
+    \ifnum\getpagerefnumber{VeryLastPage}=\value{page}\else\{Page \thepage\ of \pageref{LastPage}\fi
+  }
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+
+% Colorlet to showframe to aid in development margins
+\colorlet{showframe}{blue}
+\makeatletter
+\let\org@Gm@pageframes\Gm@pageframes
+\renewcommand*{\Gm@pageframes}{%
+  \begingroup
+    \color{showframe}%
+    \org@Gm@pageframes
+  \endgroup
+}
+\makeatother
+
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\pagestyle{empty}
+
+\usepackage{pgf,tikz}
+\usetikzlibrary{calendar}
+
+
+
+\makeatletter
+\newcommand\resetstackedplots{
+\makeatletter
+\pgfplots@stacked@isfirstplottrue
+\makeatother
+\addplot [forget plot,draw=none] coordinates{(1,0) (2,0) (3,0)};
+}
+\makeatother
